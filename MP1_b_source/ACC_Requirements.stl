@@ -1,0 +1,26 @@
+param dsafe = 2
+param T = 50
+
+# cars follow at safe distance
+safeGap := (LeadPosition[t] - HostPosition[t] >= dSafe)
+safeFollowing := alw_[0,T] (safeGap)
+
+# host car does not go backward
+forwardProgress := alw_[0,T] (HostVelocity[t] >= 0)
+
+# whenever host car is sufficient distance away, it reaches desired velocity
+param cruiseSpeed = 20
+param cruisePctTol = 0.1
+param responseTime = 10
+comfortableGap := (LeadPosition[t] - HostPosition[t] >= 3*dSafe)
+closeToDesired := (abs(HostVelocity[t] - cruiseSpeed) < cruisePctTol*cruiseSpeed)
+cruiseWhenNotImpeded := ev_[0,T] (comfortableGap => closeToDesired) 
+
+# it's not the case that host car just arbitrarily stops without the lead car having stopped first
+param reallySmallSpeed = 0.1
+dontStopUnlessLeadStops := not((LeadVelocity[t] > reallySmallSpeed) until_[0,T] (HostVelocity[t] < reallySmallSpeed))
+
+
+
+
+
