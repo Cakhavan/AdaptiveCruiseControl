@@ -2,12 +2,12 @@
 
 # Overview
 
-• Uses a Faster R-CNN to detect highway lanes, cars, and traffic lights using videos from the KITTIdataset
-• Uses various image processing and camera calibration techniques to determine detected objects’ position in 3D
+* Uses a Faster R-CNN to detect highway lanes, cars, and traffic lights using videos from the KITTIdataset
+* Uses various image processing and camera calibration techniques to determine detected objects’ position in 3D
 space in relation to the host car
-• Contains implementation of a PID based control system in MATLAB SIMULINK to operate a modern cruise control system with
+* Contains implementation of a PID based control system in MATLAB SIMULINK to operate a modern cruise control system with
 lane keeping
-• Uses Signal Temporal Logic specifications for model checking and robustness testing
+* Uses Signal Temporal Logic specifications for model checking and robustness testing
 
 # Run
 
